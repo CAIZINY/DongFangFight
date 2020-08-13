@@ -1,0 +1,126 @@
+{
+    "name": "GameInputSettings",
+    "maps": [
+        {
+            "name": "Player0",
+            "id": "29f93418-f713-41d4-8007-e87e8513c877",
+            "actions": [
+                {
+                    "name": "Up",
+                    "type": "PassThrough",
+                    "id": "6d8abe59-f08f-4128-a17b-33681d107afb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Down",
+                    "type": "PassThrough",
+                    "id": "d81e2bab-c561-4931-9786-6b9401a1277e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Left",
+                    "type": "PassThrough",
+                    "id": "c2ceea5f-b43b-44ba-8020-422b64dd14f3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Right",
+                    "type": "PassThrough",
+                    "id": "e10a1a93-e4f1-409b-8d69-a7a149cb5370",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Dash",
+                    "type": "Button",
+                    "id": "9fd7f7b7-4077-47e9-a682-e3a20abecd78",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f42cf53e-505e-4af7-ba31-f36028ca5986",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Up",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ebbed5c5-8c2e-4737-8762-e4f15f90b0f9",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Down",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "99f5f770-2984-436e-b608-efea7aab03f7",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3e9c7fc4-805b-4201-85c7-a9d7a7c9df47",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7c267a7b-38e0-44cf-a41a-e512d8d5e5d5",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "KeyboardMouse",
+            "bindingGroup": "KeyboardMouse",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": true,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
