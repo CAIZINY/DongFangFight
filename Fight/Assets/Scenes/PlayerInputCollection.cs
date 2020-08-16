@@ -8,6 +8,7 @@ public class PlayerInputCollection : MonoBehaviour
     
     [Tooltip("默认为5，表示站直的状态")]public int movementCommand = 5;
     [Tooltip("移动命令检测，不要修改")] public bool movementCommandDetected = false;
+    [Tooltip("移动冲刺命令检测，不要修改")] public bool moveDashCommand = false;
 
     private bool upInput = false;
     private bool downInput = false;
@@ -19,26 +20,37 @@ public class PlayerInputCollection : MonoBehaviour
     private bool rightInputLastPeriod = false;
     private int lastFrameMovementCommand = 5;//上一帧的输入信息
 
+    private AnimatorStateParamsXiaoYe animatorStateParamsXiaoYe;
+
+    void Awake()
+    {
+        animatorStateParamsXiaoYe = GetComponent<AnimatorStateParamsXiaoYe>();
+    }
+
     void Update()
     {
-        MovementCommandProcessor();
+        print(movementCommand);
     }
 
     public void UpInput(InputAction.CallbackContext context)
     {
         upInput = !upInput;
+        MovementCommandProcessor();
     }
     public void DownInput(InputAction.CallbackContext context)
     {
         downInput = !downInput;
+        MovementCommandProcessor();
     }
     public void LeftInput(InputAction.CallbackContext context)
     {
         leftInput = !leftInput;
+        MovementCommandProcessor();
     }
     public void RightInput(InputAction.CallbackContext context)
     {
         rightInput = !rightInput;
+        MovementCommandProcessor();
     }
 
     /// <summary>
@@ -110,6 +122,14 @@ public class PlayerInputCollection : MonoBehaviour
         }
         movementCommand = 5;
         movementCommandDetected = false;
+    }
+
+    public void DashCommand(InputAction.CallbackContext context)
+    {
+        if (movementCommand == 5)//没有处于移动命令退出检测Dash
+            return;
+        moveDashCommand = !moveDashCommand;
+        print("Dash");
     }
 
     void CacheLastFrameMovementCommand()
