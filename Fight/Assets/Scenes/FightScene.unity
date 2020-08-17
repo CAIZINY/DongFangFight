@@ -358,6 +358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementCommand: 5
   movementCommandDetected: 0
+  moveDashCommand: 0
 --- !u!114 &305997757
 MonoBehaviour:
   m_ObjectHideFlags: 0

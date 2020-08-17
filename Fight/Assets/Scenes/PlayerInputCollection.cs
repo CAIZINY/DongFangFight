@@ -128,7 +128,14 @@ public class PlayerInputCollection : MonoBehaviour
     {
         if (movementCommand == 5)//没有处于移动命令退出检测Dash
             return;
-        moveDashCommand = !moveDashCommand;
+        if (moveDashCommand)
+        {
+            moveDashCommand = false;
+        }
+        else
+        {
+            moveDashCommand = true;
+        }
         print("Dash");
     }
 
