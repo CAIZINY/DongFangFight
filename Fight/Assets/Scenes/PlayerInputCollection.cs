@@ -29,7 +29,7 @@ public class PlayerInputCollection : MonoBehaviour
 
     void Update()
     {
-        print(movementCommand);
+
     }
 
     public void UpInput(InputAction.CallbackContext context)
@@ -95,6 +95,13 @@ public class PlayerInputCollection : MonoBehaviour
                 movementCommandDetected = true;
                 return;
             }
+            if(upInput)
+            {
+                movementCommand = 8;
+                CacheLastFrameMovementCommand();
+                movementCommandDetected = true;
+                return;
+            }
             movementCommand = 2;
             CacheLastFrameMovementCommand();
             movementCommandDetected = true;
@@ -136,7 +143,6 @@ public class PlayerInputCollection : MonoBehaviour
         {
             moveDashCommand = true;
         }
-        print("Dash");
     }
 
     void CacheLastFrameMovementCommand()
