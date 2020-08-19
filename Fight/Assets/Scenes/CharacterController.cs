@@ -8,10 +8,12 @@ public class CharacterController : MonoBehaviour
     [Tooltip("地面检测距离")] public float groundDetectedDistance;
     [Tooltip("水平方向移动速度")] public float horizontalSpeed;
     [Tooltip("竖直方向跳跃力")] public float verticalSpeed;
+    [Tooltip("竖直方向跳跃")] public AnimationCurve jumpUpCurve;
 
     private bool m_CharacterGrounded = true;
     private PlayerInputCollection m_PlayerInput;
     private Rigidbody2D m_Rigid2D;
+    private Vector2 m_Rigid2DSpeed;
 
     private AnimatorStateParamsXiaoYe m_AnimatorParamsStates;
     private Animator m_Animator;
@@ -79,36 +81,42 @@ public class CharacterController : MonoBehaviour
             m_Rigid2D.velocity = Vector2.left * horizontalSpeed;
             return;
         }
+ 
         if (m_CurrentStateInfo.shortNameHash == m_AnimatorParamsStates.m_HashStatesJumpUpStartRaising)
         {
             m_Rigid2D.velocity = Vector2.up * verticalSpeed;
             return;
         }
+
         if (m_CurrentStateInfo.shortNameHash == m_AnimatorParamsStates.m_HashStatesJumpUpRaising)
         {
+            
             m_Rigid2D.velocity = Vector2.up * verticalSpeed;
             return;
         }
-        if (m_CurrentStateInfo.shortNameHash == m_AnimatorParamsStates.m_HashStatesJumpUpStartDorping)
-        {
-            m_Rigid2D.velocity = Vector2.down * verticalSpeed;
-            return;
-        }
-        if (m_CurrentStateInfo.shortNameHash == m_AnimatorParamsStates.m_HashStatesJumpUpDroping)
-        {
-            m_Rigid2D.velocity = Vector2.down * verticalSpeed;
-            return;
-        }
-        if (m_CurrentStateInfo.shortNameHash == m_AnimatorParamsStates.m_HashStatesAttackBcEnding)
-        {
-            m_Rigid2D.velocity = Vector2.down * verticalSpeed;
-            return;
-        }
-        if (m_CurrentStateInfo.shortNameHash == m_AnimatorParamsStates.m_HashStatesAttackBcCast)
-        {
-            
-            return;
-        }
+       
+         if (m_CurrentStateInfo.shortNameHash == m_AnimatorParamsStates.m_HashStatesJumpUpStartDorping)
+         {
+             m_Rigid2D.velocity = Vector2.down * verticalSpeed;
+             return;
+         }
+         if (m_CurrentStateInfo.shortNameHash == m_AnimatorParamsStates.m_HashStatesJumpUpDroping)
+         {
+             m_Rigid2D.velocity = Vector2.down * verticalSpeed;
+             return;
+         }
+        /*
+       if (m_CurrentStateInfo.shortNameHash == m_AnimatorParamsStates.m_HashStatesAttackBcEnding)
+       {
+           m_Rigid2D.velocity = Vector2.down * verticalSpeed;
+           return;
+       }
+       if (m_CurrentStateInfo.shortNameHash == m_AnimatorParamsStates.m_HashStatesAttackBcCast)
+       {
+
+           return;
+       }
+       */
         m_Rigid2D.velocity = Vector2.zero;
     }
 
