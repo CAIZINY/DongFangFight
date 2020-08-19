@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AirborneJumpSMEnterProcess : StateMachineBehaviour
+public class EnterAttackDerivateReset : StateMachineBehaviour
 {
+    int m_HashParamsAttackCommandDerivateState = Animator.StringToHash("AttackCommandDerivateState");
 
-    readonly int m_HashParamsAirborneJumpType = Animator.StringToHash("AirborneJumpType");
     // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
-    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-        
-    //}
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        animator.SetInteger(m_HashParamsAttackCommandDerivateState, -1);
+    }
 
     // OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine
     //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -43,8 +43,8 @@ public class AirborneJumpSMEnterProcess : StateMachineBehaviour
     //}
 
     // OnStateMachineExit is called when exiting a state machine via its Exit Node
-    override public void OnStateMachineExit(Animator animator, int stateMachinePathHash)
-    {
-        animator.SetInteger(m_HashParamsAirborneJumpType, -1);
-    }
+    //override public void OnStateMachineExit(Animator animator, int stateMachinePathHash)
+    //{
+    //    
+    //}
 }

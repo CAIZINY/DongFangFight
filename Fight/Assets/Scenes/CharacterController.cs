@@ -25,6 +25,9 @@ public class CharacterController : MonoBehaviour
     void Update()
     {
         MoveCommandDetected();
+
+        AttackCommandDetected();
+
         print(m_PlayerInput.moveDashCommand);
     }
 
@@ -45,5 +48,18 @@ public class CharacterController : MonoBehaviour
         }
         m_Animator.SetInteger(m_AnimatorParamsStates.m_HashParamsMoveCommand, m_PlayerInput.movementCommand);
 
+    }
+
+    void AttackCommandDetected()
+    {
+        if (m_PlayerInput.attackCommandType == -1)
+        {
+            m_Animator.SetBool(m_AnimatorParamsStates.m_HashParamsAttackCommandDetected, false);
+        }
+        else
+        {
+            m_Animator.SetBool(m_AnimatorParamsStates.m_HashParamsAttackCommandDetected, true);
+        }
+        m_Animator.SetInteger(m_AnimatorParamsStates.m_HashParamsAttackCommandType, m_PlayerInput.attackCommandType);
     }
 }

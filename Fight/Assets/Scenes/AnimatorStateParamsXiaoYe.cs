@@ -8,6 +8,8 @@ public class AnimatorStateParamsXiaoYe : MonoBehaviour
     public readonly int m_HashParamsMoveCommand = Animator.StringToHash("MoveCommand");
     public readonly int m_HashParamsMoveCommandDetected = Animator.StringToHash("MoveCommandDetected");
     public readonly int m_HashParamsMoveDashCommand = Animator.StringToHash("MoveDashCommand");
+    public readonly int m_HashParamsAttackCommandDetected = Animator.StringToHash("AttackCommandDetected");
+    public readonly int m_HashParamsAttackCommandType = Animator.StringToHash("AttackCommandType");
 
     //states
     public readonly int m_HashStatesIdle0 = Animator.StringToHash("Idle0");

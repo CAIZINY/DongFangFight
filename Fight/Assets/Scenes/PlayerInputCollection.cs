@@ -10,7 +10,7 @@ public class PlayerInputCollection : MonoBehaviour
     [Tooltip("移动命令检测，不要修改")] public bool movementCommandDetected = false;
     [Tooltip("移动冲刺命令检测，不要修改")] public bool moveDashCommand = false;
     [Tooltip("攻击命令检测，不要修改")] public bool attackCommandDetected = false;
-    [Tooltip("攻击命令，默认为-1，0对应A，1对应B")] public int attackCommand = -1;
+    [Tooltip("攻击命令，默认为-1，0对应A，1对应B")] public int attackCommandType = -1;
 
     private bool upInput = false;
     private bool downInput = false;
@@ -149,15 +149,45 @@ public class PlayerInputCollection : MonoBehaviour
 
     public void AttackACommand(InputAction.CallbackContext context)
     {
-
+        if(attackCommandDetected)
+        {
+            attackCommandDetected = false;
+            attackCommandType = -1;
+            return;
+        }
+        else
+        {
+            attackCommandDetected = true;
+            attackCommandType = 0;
+        }
     }
     public void AttackBCommand(InputAction.CallbackContext context)
     {
-
+        if (attackCommandDetected)
+        {
+            attackCommandDetected = false;
+            attackCommandType = -1;
+            return;
+        }
+        else
+        {
+            attackCommandDetected = true;
+            attackCommandType = 1;
+        }
     }
     public void AttackCCommand(InputAction.CallbackContext context)
     {
-
+        if (attackCommandDetected)
+        {
+            attackCommandDetected = false;
+            attackCommandType = -1;
+            return;
+        }
+        else
+        {
+            attackCommandDetected = true;
+            attackCommandType = 2;
+        }
     }
 
     void CacheLastFrameMovementCommand()
