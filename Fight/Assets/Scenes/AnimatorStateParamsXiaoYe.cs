@@ -22,6 +22,14 @@ public class AnimatorStateParamsXiaoYe : MonoBehaviour
     public readonly int m_HashStatesSitUp = Animator.StringToHash("SitUp");//AttackCommandDerivateState = 2
     public readonly int m_HashStatesSitting = Animator.StringToHash("Sitting");//AttackCommandDerivateState = 2
     public readonly int m_HashStatesSitDown = Animator.StringToHash("SitDown");//AttackCommandDerivateState = 2
+    public readonly int m_HashStatesJumpUpStartRaising = Animator.StringToHash("JumpUpStartRaising");
+    public readonly int m_HashStatesJumpUpRaising = Animator.StringToHash("JumpUpRaising");
+    public readonly int m_HashStatesJumpUpStartDorping = Animator.StringToHash("JumpUpStartDorping");
+    public readonly int m_HashStatesJumpUpDroping = Animator.StringToHash("JumpUpDroping");
+
+    public readonly int m_HashStatesAttackBcEnding = Animator.StringToHash("AttackBcEnding");
+    public readonly int m_HashStatesAttackBcCast = Animator.StringToHash("AttackBcCast");
+
     // Start is called before the first frame update
     void Start()
     {

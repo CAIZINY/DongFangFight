@@ -6,6 +6,8 @@ public class CharacterController : MonoBehaviour
 {
     [Tooltip("地面碰撞层")]public LayerMask groundLayer;
     [Tooltip("地面检测距离")] public float groundDetectedDistance;
+    [Tooltip("水平方向移动速度")] public float horizontalSpeed;
+    [Tooltip("竖直方向跳跃力")] public float verticalSpeed;
 
     private bool m_CharacterGrounded = true;
     private PlayerInputCollection m_PlayerInput;
@@ -41,7 +43,9 @@ public class CharacterController : MonoBehaviour
 
         AttackCommandDetected();
 
-        CacheAnimatorInfo();   
+        CacheAnimatorInfo();
+
+        MoveCommandReact();
     }
 
     /// <summary>
@@ -61,6 +65,51 @@ public class CharacterController : MonoBehaviour
         }
         m_Animator.SetInteger(m_AnimatorParamsStates.m_HashParamsMoveCommand, m_PlayerInput.movementCommand);
 
+    }
+
+    void MoveCommandReact()
+    {
+        if(m_CurrentStateInfo.shortNameHash == m_AnimatorParamsStates.m_HashStatesWalkFront)
+        {
+            m_Rigid2D.velocity = Vector2.right * horizontalSpeed;
+            return;
+        }
+        if (m_CurrentStateInfo.shortNameHash == m_AnimatorParamsStates.m_HashStatesWalkBack)
+        {
+            m_Rigid2D.velocity = Vector2.left * horizontalSpeed;
+            return;
+        }
+        if (m_CurrentStateInfo.shortNameHash == m_AnimatorParamsStates.m_HashStatesJumpUpStartRaising)
+        {
+            m_Rigid2D.velocity = Vector2.up * verticalSpeed;
+            return;
+        }
+        if (m_CurrentStateInfo.shortNameHash == m_AnimatorParamsStates.m_HashStatesJumpUpRaising)
+        {
+            m_Rigid2D.velocity = Vector2.up * verticalSpeed;
+            return;
+        }
+        if (m_CurrentStateInfo.shortNameHash == m_AnimatorParamsStates.m_HashStatesJumpUpStartDorping)
+        {
+            m_Rigid2D.velocity = Vector2.down * verticalSpeed;
+            return;
+        }
+        if (m_CurrentStateInfo.shortNameHash == m_AnimatorParamsStates.m_HashStatesJumpUpDroping)
+        {
+            m_Rigid2D.velocity = Vector2.down * verticalSpeed;
+            return;
+        }
+        if (m_CurrentStateInfo.shortNameHash == m_AnimatorParamsStates.m_HashStatesAttackBcEnding)
+        {
+            m_Rigid2D.velocity = Vector2.down * verticalSpeed;
+            return;
+        }
+        if (m_CurrentStateInfo.shortNameHash == m_AnimatorParamsStates.m_HashStatesAttackBcCast)
+        {
+            
+            return;
+        }
+        m_Rigid2D.velocity = Vector2.zero;
     }
 
     void AttackCommandDetected()
@@ -92,15 +141,4 @@ public class CharacterController : MonoBehaviour
         m_NextStateInfo = m_Animator.GetNextAnimatorStateInfo(0);
     }
 
-    void OnAnimatorMove()
-    {
-        if(m_CurrentStateInfo.shortNameHash == m_AnimatorParamsStates.m_HashStatesWalkFront)
-        {
-
-        }
-        if (m_CurrentStateInfo.shortNameHash == m_AnimatorParamsStates.m_HashStatesWalkBack)
-        {
-
-        }
-    }
 }
