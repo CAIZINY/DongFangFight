@@ -9,14 +9,22 @@ public class CharacterController : MonoBehaviour
 
     private bool m_CharacterGrounded = true;
     private PlayerInputCollection m_PlayerInput;
+    private Rigidbody2D m_Rigid2D;
+
     private AnimatorStateParamsXiaoYe m_AnimatorParamsStates;
     private Animator m_Animator;
+
+    protected AnimatorStateInfo m_PreviousCurrentStateInfo;
+    protected AnimatorStateInfo m_PreviousNextStateInfo;
+    protected AnimatorStateInfo m_CurrentStateInfo;
+    protected AnimatorStateInfo m_NextStateInfo;
 
     void Awake()
     {
         m_PlayerInput = GetComponent<PlayerInputCollection>();
         m_AnimatorParamsStates = GetComponent<AnimatorStateParamsXiaoYe>();
         m_Animator = GetComponent<Animator>();
+        m_Rigid2D = GetComponent<Rigidbody2D>();
     }
 
     void Start()
@@ -33,7 +41,7 @@ public class CharacterController : MonoBehaviour
 
         AttackCommandDetected();
 
-        
+        CacheAnimatorInfo();   
     }
 
     /// <summary>
@@ -73,5 +81,26 @@ public class CharacterController : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundDetectedDistance, groundLayer);
         Debug.DrawLine(transform.position, transform.position + Vector3.down* groundDetectedDistance, Color.red, 0.3f);
         m_Animator.SetBool(m_AnimatorParamsStates.m_HashParamsGrounded, (bool)hit);
+    }
+
+    void CacheAnimatorInfo()
+    {
+        m_PreviousCurrentStateInfo = m_CurrentStateInfo;
+        m_PreviousNextStateInfo = m_NextStateInfo;
+
+        m_CurrentStateInfo = m_Animator.GetCurrentAnimatorStateInfo(0);
+        m_NextStateInfo = m_Animator.GetNextAnimatorStateInfo(0);
+    }
+
+    void OnAnimatorMove()
+    {
+        if(m_CurrentStateInfo.shortNameHash == m_AnimatorParamsStates.m_HashStatesWalkFront)
+        {
+
+        }
+        if (m_CurrentStateInfo.shortNameHash == m_AnimatorParamsStates.m_HashStatesWalkBack)
+        {
+
+        }
     }
 }
