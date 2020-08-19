@@ -44,6 +44,30 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "AttackA",
+                    "type": "PassThrough",
+                    "id": "4ef424f1-18e7-4cd3-91a5-8b4103a3c5a9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "AttackB",
+                    "type": "PassThrough",
+                    "id": "d0650a6b-3931-4327-ba22-341cd2a9cdd9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "AttackC",
+                    "type": "PassThrough",
+                    "id": "82948905-0636-4019-8a4a-01d11f6ea065",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -99,6 +123,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4f701670-5f28-49c3-9469-867173283b8a",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AttackA",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e7f39146-97a5-457f-91e6-88653f7af17d",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AttackB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0a77de8a-ee49-4510-b37e-6440206e8822",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AttackC",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

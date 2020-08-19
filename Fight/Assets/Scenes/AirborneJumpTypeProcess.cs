@@ -8,6 +8,7 @@ public class AirborneJumpTypeProcess : StateMachineBehaviour
     readonly int m_HashParamsAirborneJumpType = Animator.StringToHash("AirborneJumpType");
 
     //states
+    readonly int m_HashStatesIdle0 = Animator.StringToHash("Idle0");//AirborneJumpType = 2
     readonly int m_HashStatesDashFrontStart = Animator.StringToHash("DashFrontStart");//AirborneJumpType=668
     readonly int m_HashStatesDashFrontDashing = Animator.StringToHash("DashFrontDashing");//AirborneJumpType=668
     readonly int m_HashStatesDashFrontEnd = Animator.StringToHash("DashFrontEnd");//AirborneJumpType=668
@@ -17,25 +18,22 @@ public class AirborneJumpTypeProcess : StateMachineBehaviour
     readonly int m_HashStatesSitting = Animator.StringToHash("Sitting");//AirborneJumpType = 28
     readonly int m_HashStatesSitDown = Animator.StringToHash("SitDown");//AirborneJumpType = 28
 
+    //float lastStateTime;//上一个动画状态d的
+    //float lastStateTimePerido;
+    //AnimatorStateInfo lastStateInfo;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
-
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
-
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        Debug.Log(m_HashStatesIdle0 + "Idle0");
+        Debug.Log(stateInfo.shortNameHash + "Current");
+        if (stateInfo.shortNameHash == m_HashStatesIdle0)
+        {
+            animator.SetInteger(m_HashParamsAirborneJumpType, 2);
+        }
         if (stateInfo.shortNameHash == m_HashStatesDashFrontStart)
         {
-            animator.SetInteger(m_HashParamsAirborneJumpType,668);
+            animator.SetInteger(m_HashParamsAirborneJumpType, 668);
         }
         if (stateInfo.shortNameHash == m_HashStatesDashFrontDashing)
         {
@@ -67,8 +65,20 @@ public class AirborneJumpTypeProcess : StateMachineBehaviour
             animator.SetInteger(m_HashParamsAirborneJumpType, 28);
         }
 
-
     }
+
+    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
+    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    
+    //}
+
+    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
+    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+ 
+
+    //}
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
