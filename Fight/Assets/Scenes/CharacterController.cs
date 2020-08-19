@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [Tooltip("地面碰撞层")]public LayerMask groundLayer;
+    [Tooltip("地面检测距离")] public float groundDetectedDistance;
+
+    private bool m_CharacterGrounded = true;
     private PlayerInputCollection m_PlayerInput;
     private AnimatorStateParamsXiaoYe m_AnimatorParamsStates;
     private Animator m_Animator;
@@ -24,11 +27,13 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GroundedDetected();
+
         MoveCommandDetected();
 
         AttackCommandDetected();
 
-        print(m_PlayerInput.moveDashCommand);
+        
     }
 
     /// <summary>
@@ -61,5 +66,12 @@ public class CharacterController : MonoBehaviour
             m_Animator.SetBool(m_AnimatorParamsStates.m_HashParamsAttackCommandDetected, true);
         }
         m_Animator.SetInteger(m_AnimatorParamsStates.m_HashParamsAttackCommandType, m_PlayerInput.attackCommandType);
+    }
+
+    void GroundedDetected()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundDetectedDistance, groundLayer);
+        Debug.DrawLine(transform.position, transform.position + Vector3.down* groundDetectedDistance, Color.red, 0.3f);
+        m_Animator.SetBool(m_AnimatorParamsStates.m_HashParamsGrounded, (bool)hit);
     }
 }

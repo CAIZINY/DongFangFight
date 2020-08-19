@@ -10,6 +10,7 @@ public class AnimatorStateParamsXiaoYe : MonoBehaviour
     public readonly int m_HashParamsMoveDashCommand = Animator.StringToHash("MoveDashCommand");
     public readonly int m_HashParamsAttackCommandDetected = Animator.StringToHash("AttackCommandDetected");
     public readonly int m_HashParamsAttackCommandType = Animator.StringToHash("AttackCommandType");
+    public readonly int m_HashParamsGrounded = Animator.StringToHash("Grounded");
 
     //states
     public readonly int m_HashStatesIdle0 = Animator.StringToHash("Idle0");
