@@ -24,6 +24,8 @@ public class CharacterController : MonoBehaviour
     private AnimatorStateParamsXiaoYe m_AnimatorParamsStates;
     private Animator m_Animator;
 
+    private CharacterXiaoYeBulletAttackSystem attackSystem;
+
     protected AnimatorStateInfo m_PreviousCurrentStateInfo;
     protected AnimatorStateInfo m_PreviousNextStateInfo;
     protected AnimatorStateInfo m_CurrentStateInfo;
@@ -35,6 +37,7 @@ public class CharacterController : MonoBehaviour
         m_AnimatorParamsStates = GetComponent<AnimatorStateParamsXiaoYe>();
         m_Animator = GetComponent<Animator>();
         m_Rigid2D = GetComponent<Rigidbody2D>();
+        attackSystem = GetComponent<CharacterXiaoYeBulletAttackSystem>();
     }
 
     void Start()
@@ -159,6 +162,7 @@ public class CharacterController : MonoBehaviour
         else
         {
             m_Animator.SetBool(m_AnimatorParamsStates.m_HashParamsAttackCommandDetected, true);
+            attackSystem.Attack5B();
         }
         m_Animator.SetInteger(m_AnimatorParamsStates.m_HashParamsAttackCommandType, m_PlayerInput.attackCommandType);
     }

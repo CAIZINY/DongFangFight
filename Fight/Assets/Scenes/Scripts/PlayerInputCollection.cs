@@ -20,7 +20,7 @@ public class PlayerInputCollection : MonoBehaviour
     private bool downInputLastPeriod = false;
     private bool leftInputLastPeriod = false;
     private bool rightInputLastPeriod = false;
-    private int lastFrameMovementCommand = 5;//上一帧的输入信息
+    private bool reverseInput = false;
 
     private AnimatorStateParamsXiaoYe animatorStateParamsXiaoYe;
 
@@ -196,6 +196,6 @@ public class PlayerInputCollection : MonoBehaviour
         rightInputLastPeriod = rightInput;
         downInputLastPeriod = downInput;
         upInputLastPeriod = upInput;
-        lastFrameMovementCommand = movementCommand;
+
     }
 }
