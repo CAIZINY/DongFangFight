@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class CharacterXiaoYeBulletAttackSystem : MonoBehaviour
 {
-    public GameObject bullet;
-    public GameObject startPoint;
-
-
-    public void Attack5B()
+    // Start is called before the first frame update
+    void Start()
     {
-        Instantiate<GameObject>(bullet,startPoint.transform.position,Quaternion.Euler(0,0,0));
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 }
