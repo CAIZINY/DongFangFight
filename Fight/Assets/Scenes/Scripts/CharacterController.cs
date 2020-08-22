@@ -116,6 +116,44 @@ public class CharacterController : MonoBehaviour
             m_Animator.SetFloat(m_AnimatorParamsStates.m_HashParamsVerticalSpeed, m_Rigid2D.velocity.y);
             return;
         }
+        if (m_CurrentStateInfo.shortNameHash == m_AnimatorParamsStates.m_HashStatesJumpFront)
+        {
+            if (m_CurrentStateInfo.normalizedTime < 0.1f)
+            {
+                m_Rigid2D.velocity = Vector2.up * -Physics2D.gravity * jumpSpeedScale/2+Vector2.right*5;
+                m_Animator.SetFloat(m_AnimatorParamsStates.m_HashParamsVerticalSpeed, m_Rigid2D.velocity.y);
+            }
+            return;
+        }
+        if (m_CurrentStateInfo.shortNameHash == m_AnimatorParamsStates.m_HashStatesJumpBack)
+        {
+            if (m_CurrentStateInfo.normalizedTime < 0.1f)
+            {
+                m_Rigid2D.velocity = Vector2.up * -Physics2D.gravity * jumpSpeedScale / 2 + Vector2.left * 5;
+                m_Animator.SetFloat(m_AnimatorParamsStates.m_HashParamsVerticalSpeed, m_Rigid2D.velocity.y);
+            }
+            return;
+        }
+        if (m_CurrentStateInfo.shortNameHash == m_AnimatorParamsStates.m_HashStatesDashFrontDashing)
+        {
+            m_Rigid2D.velocity = Vector2.right * horizontalSpeed * 2;
+            return;
+        }
+        if (m_CurrentStateInfo.shortNameHash == m_AnimatorParamsStates.m_HashStatesDashFrontStart)
+        {
+            m_Rigid2D.velocity = Vector2.right * horizontalSpeed*(1+ m_CurrentStateInfo.normalizedTime);
+            return;
+        }
+        if (m_CurrentStateInfo.shortNameHash == m_AnimatorParamsStates.m_HashStatesDashBack)
+        {
+            m_Rigid2D.velocity = Vector2.left * horizontalSpeed * (1 + m_CurrentStateInfo.normalizedTime);
+            return;
+        }
+        if (m_CurrentStateInfo.shortNameHash == m_AnimatorParamsStates.m_HashStatesDashFrontEnd)
+        {
+            m_Rigid2D.velocity = Vector2.right * horizontalSpeed * (1 - m_CurrentStateInfo.normalizedTime);
+            return;
+        }
         /*
               if (m_CurrentStateInfo.shortNameHash == m_AnimatorParamsStates.m_HashStatesJumpUpStartRaising)
               {

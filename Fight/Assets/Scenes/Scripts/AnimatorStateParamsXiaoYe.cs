@@ -28,6 +28,11 @@ public class AnimatorStateParamsXiaoYe : MonoBehaviour
     public readonly int m_HashStatesJumpUpTop = Animator.StringToHash("JumpUpTop");
     public readonly int m_HashStatesJumpUpDrop = Animator.StringToHash("JumpUpDrop");
     public readonly int m_HashStatesJumpUpDroping = Animator.StringToHash("JumpUpDroping");
+    public readonly int m_HashStatesDashBack = Animator.StringToHash("DashBack");
+
+    public readonly int m_HashStatesJumpFront = Animator.StringToHash("JumpFront");
+    public readonly int m_HashStatesJumpBack = Animator.StringToHash("JumpBack");
+    
 
     public readonly int m_HashStatesAttackBcEnding = Animator.StringToHash("AttackBcEnding");
     public readonly int m_HashStatesAttackBcCast = Animator.StringToHash("AttackBcCast");

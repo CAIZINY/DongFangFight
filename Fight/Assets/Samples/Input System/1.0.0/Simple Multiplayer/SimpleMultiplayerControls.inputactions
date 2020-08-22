@@ -69,6 +69,17 @@
                     "action": "Teleport",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "758a0b9d-9568-4e12-a06f-fd31bfabc9fd",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Teleport",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
@@ -78,11 +89,6 @@
             "name": "Keyboard&Mouse",
             "bindingGroup": "Keyboard&Mouse",
             "devices": [
-                {
-                    "devicePath": "<Keyboard>",
-                    "isOptional": false,
-                    "isOR": false
-                },
                 {
                     "devicePath": "<Mouse>",
                     "isOptional": false,
@@ -129,6 +135,17 @@
             "devices": [
                 {
                     "devicePath": "<XRController>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Keyboard",
+            "bindingGroup": "Keyboard",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
                     "isOptional": false,
                     "isOR": false
                 }

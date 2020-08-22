@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bullet
+  - Timer
+  - Score
+  - Coin
   layers:
   - Default
   - TransparentFX

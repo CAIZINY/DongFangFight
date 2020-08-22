@@ -1656,24 +1656,24 @@ AnimatorStateMachine:
   - {fileID: 2295161122328592063}
   - {fileID: 847737173388014068}
   m_StateMachineTransitions:
-  - first: {fileID: 7316930719537970592}
+  - first: {fileID: 1430931767388107561}
     second:
-    - {fileID: 1527272635712657002}
+    - {fileID: -2828783019901873174}
+  - first: {fileID: 2501311796343531126}
+    second:
+    - {fileID: -8090282263654847453}
   - first: {fileID: -4345844268487105224}
     second:
     - {fileID: 7364502340716845413}
   - first: {fileID: 686738760271400924}
     second:
     - {fileID: -4828451006661446574}
-  - first: {fileID: 1430931767388107561}
-    second:
-    - {fileID: -2828783019901873174}
   - first: {fileID: 3496578315948444709}
     second:
     - {fileID: 1466950956388855733}
-  - first: {fileID: 2501311796343531126}
+  - first: {fileID: 7316930719537970592}
     second:
-    - {fileID: -8090282263654847453}
+    - {fileID: 1527272635712657002}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 520, y: 110, z: 0}
   m_EntryPosition: {x: 50, y: 120, z: 0}
@@ -3112,10 +3112,6 @@ AnimatorStateMachine:
   m_EntryTransitions:
   - {fileID: 8129025018412608943}
   m_StateMachineTransitions:
-  - first: {fileID: -2066075286688584640}
-    second:
-    - {fileID: -8143085193017997128}
-    - {fileID: 6967422958482369974}
   - first: {fileID: -7562406029185882544}
     second:
     - {fileID: -602731537585025258}
@@ -3179,6 +3175,10 @@ AnimatorStateMachine:
   - first: {fileID: -3394364502225272915}
     second:
     - {fileID: -3461517685610225078}
+  - first: {fileID: -2066075286688584640}
+    second:
+    - {fileID: -8143085193017997128}
+    - {fileID: 6967422958482369974}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: -760, y: 280, z: 0}
   m_EntryPosition: {x: 50, y: 120, z: 0}
@@ -3285,16 +3285,19 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: Grounded
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 0}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 1
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
-  m_ExitTime: 0
+  m_ExitTime: 0.9982984
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
