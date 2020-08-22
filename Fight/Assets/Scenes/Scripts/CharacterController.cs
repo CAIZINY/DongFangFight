@@ -8,6 +8,9 @@ public class CharacterController : MonoBehaviour
     [Tooltip("地面检测距离")] public float groundDetectedDistance;
     [Tooltip("水平方向移动速度")] public float horizontalSpeed;
     [Tooltip("竖直方向跳跃力")] public float verticalSpeed;
+    [Tooltip("弹幕")] public GameObject bullet;
+    [Tooltip("弹幕起始位置")] public GameObject bulletStartPoint;
+    [Tooltip("弹幕数量")] public int bulletAmount = 1;
 
     [Header("垂直跳跃")]
     [Tooltip("竖直方向跳跃")] public float jumpSpeedScale;
@@ -17,6 +20,8 @@ public class CharacterController : MonoBehaviour
 
 
     private bool m_CharacterGrounded = true;
+    private bool m_SameState = false;
+    private int createdBullet;
     private PlayerInputCollection m_PlayerInput;
     private Rigidbody2D m_Rigid2D;
     private Vector2 m_Rigid2DSpeed;
@@ -159,6 +164,21 @@ public class CharacterController : MonoBehaviour
         else
         {
             m_Animator.SetBool(m_AnimatorParamsStates.m_HashParamsAttackCommandDetected, true);
+            if (m_SameState)
+            {
+                if (createdBullet < bulletAmount)
+                {
+                    GameObject newBullet = Instantiate<GameObject>(bullet, bulletStartPoint.transform.position, bulletStartPoint.transform.rotation, bulletStartPoint.transform);
+                    newBullet.GetComponent<KnifeController>().creator = gameObject;
+                    createdBullet += 1;
+                }
+            }
+            else
+            {
+                createdBullet = 0;
+            }
+               
+
         }
         m_Animator.SetInteger(m_AnimatorParamsStates.m_HashParamsAttackCommandType, m_PlayerInput.attackCommandType);
     }
@@ -172,11 +192,23 @@ public class CharacterController : MonoBehaviour
 
     void CacheAnimatorInfo()
     {
+        if(m_PreviousCurrentStateInfo.shortNameHash == m_CurrentStateInfo.shortNameHash)
+        {
+            m_SameState = true;
+        }
+        else
+        {
+            m_SameState = false;
+        }
+
         m_PreviousCurrentStateInfo = m_CurrentStateInfo;
         m_PreviousNextStateInfo = m_NextStateInfo;
 
         m_CurrentStateInfo = m_Animator.GetCurrentAnimatorStateInfo(0);
         m_NextStateInfo = m_Animator.GetNextAnimatorStateInfo(0);
+
+       
+        
     }
 
 }
